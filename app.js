@@ -37,8 +37,11 @@ mongoose
   })
 // 引入路由文件
 const articles = require('./routes/api/articles')
+const comments = require('./routes/api/comments')
 //配置路由地址
 router.use('/api/articles', articles)
+router.use('/api/comments', comments)
+
 // 配置路由
 app.use(router.routes()).use(router.allowedMethods())
 

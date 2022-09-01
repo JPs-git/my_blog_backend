@@ -1,11 +1,10 @@
 const Router = require('koa-router')
-const { update } = require('../../models/Article')
 const router = new Router()
 // 引入modle
 const Article = require('../../models/Article')
 
 /**
- * @route GET api/articles/
+ * @route GET api/articles/test
  * @description 测试接口
  * @access      接口公开
  */
