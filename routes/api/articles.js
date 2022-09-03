@@ -31,12 +31,12 @@ router.post('/', async (ctx) => {
 
 /**
  * @route GET api/articles/
- * @description 获取所有文章
+ * @description 获取所有文章 (按照时间排序)
  * @access      接口公开
  */
 router.get('/', async (ctx) => {
   const query = { isActive: true }
-  const findResult = await Article.find(query)
+  const findResult = await Article.find(query).sort({'_id':-1})
   ctx.status = 200
   ctx.body = { status: ctx.status, data: { findResult } }
 })

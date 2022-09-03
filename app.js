@@ -8,15 +8,19 @@ const passport = require('koa-passport')
 const app = new koa()
 const router = new Router()
 
+// 使用中间件
 app.use(bodyparser())
 app.use(passport.initialize())
 app.use(passport.session())
 
-
-
+// 处理跨域
+app.use(async (ctx, next) => {
+    ctx.set('Access-Control-Allow-Origin', '*')
+    ctx.set("Access-Control-Allow-Headers", "Content-Type,XFILENAME,XFILECATEGORY,XFILESIZE");
+    await next()
+})
 
 // 路由
-
 router.get('/', async (ctx) => {
   ctx.body = { msg: 'Hello koa interfaces' }
 })

@@ -4,14 +4,14 @@ const CommentSchema = new Schema({
   // 所属文章外键
   article_id:{
     type:String,
-    required:true
+    default:''
   },
   // 文章还是留言
   comment_type:{
     type:String,
     required:true
   },
-  content:{
+  context:{
     type:String,
     default:''
   },
@@ -24,6 +24,21 @@ const CommentSchema = new Schema({
   pub_date:{
     type:Date,
     default:Date.now()
+  },
+  // 昵称
+  nickname:{
+    type:String,
+    required:true
+  },
+  // 邮箱
+  email:{
+    type:String,
+    required:true
+  },
+  // 链接
+  linkURL:{
+    type:String,
+    required:true
   }
 })
 

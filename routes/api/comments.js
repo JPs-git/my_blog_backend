@@ -30,6 +30,17 @@ router.post('/', async (ctx) => {
 })
 
 /**
+ * @route GET api/comments/msgboard
+ * @description 查找留言板的评论
+ * @access      接口公开
+ */
+ router.get('/msgboard', async (ctx) => {
+  const findResult = await Comment.find({comment_type:'msgboard'}).sort({'_id':-1})
+  ctx.status = 200
+  ctx.body = {data:{findResult}}
+})
+
+/**
  * @route GET api/comments/:id
  * @description 查找指定id评论
  * @access      接口公开
