@@ -53,6 +53,29 @@ router.get('/:id', async (ctx) => {
 })
 
 /**
+ * @route PATCH api/articles/like/:id
+ * @description 修改点赞数
+ * @access      接口公开
+ */
+ router.patch('/like/:id', async (ctx) => {
+  const { id } = ctx.params
+  const is_like = ctx.request.body.like
+  const findResult = await Article.findById(id) 
+  let old_likes = findResult.likes
+  let new_likes = old_likes
+  if(is_like){
+    // like数加一
+    new_likes = ++old_likes
+  }else{
+    // like减一
+    new_likes = --old_likes
+  }
+  await Article.findByIdAndUpdate(id, {likes: new_likes})
+  ctx.status = 200
+  ctx.body = { success : true, like: is_like}
+})
+
+/**
  * @route PATCH api/articles/:id
  * @description 部分修改指定id的文章
  * @access      接口公开

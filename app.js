@@ -17,6 +17,7 @@ app.use(passport.session())
 app.use(async (ctx, next) => {
     ctx.set('Access-Control-Allow-Origin', '*')
     ctx.set("Access-Control-Allow-Headers", "Content-Type,XFILENAME,XFILECATEGORY,XFILESIZE");
+    ctx.set('Access-Control-Allow-Methods', '*')
     await next()
 })
 

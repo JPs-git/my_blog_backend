@@ -23,7 +23,7 @@ const CommentSchema = new Schema({
   // 发布时间
   pub_date:{
     type:Date,
-    default:Date.now()
+    default:Date.now
   },
   // 昵称
   nickname:{
